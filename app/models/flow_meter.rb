@@ -121,7 +121,7 @@ class FlowMeter < ActiveRecord::Base
   end
   
   def clean_catch_url
-    clean_url(:catch_url) unless catch_url.blank?
+    clean_url(:catch_url) unless catch_url.blank?  or catch_url.match('^http://')
   end
   
   def clean_redirect_url
