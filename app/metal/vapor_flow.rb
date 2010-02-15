@@ -35,7 +35,7 @@ class VaporFlow
         if (match)
           status = value[1].to_i
           redirect_url = self.match_substitute(value[0], match)
-          query_string_symbol = (redirect_url =~ /\?/ : "&" : "?")
+          query_string_symbol = (redirect_url =~ /\?/ ? "&" : "?")
           return [status, {"Location" => CGI.unescape(local_or_external_path(redirect_url)) + (!query_string.blank? ? "#{query_string_symbol}#{query_string}" : '')}, [status.to_s]]
           break
         else
@@ -53,7 +53,7 @@ class VaporFlow
       unless a_match.nil?
         status = a_match[1].to_i
         redirect_url = a_match[0]
-        query_string_symbol = (redirect_url =~ /\?/ : "&" : "?")
+        query_string_symbol = (redirect_url =~ /\?/ ? "&" : "?")
         [status, {"Location" => CGI.unescape(local_or_external_path(redirect_url)) + (!query_string.blank? ? "#{query_string_symbol}#{query_string}" : '')}, [status.to_s]]
       else
         self.send_to_radiant
