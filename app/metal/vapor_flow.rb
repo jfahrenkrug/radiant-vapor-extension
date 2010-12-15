@@ -7,7 +7,7 @@ class VaporFlow
   @@use_regexp = nil
   class << self  
     def call(env)
-      if env["PATH_INFO"].blank?
+      if env["PATH_INFO"].blank? or env["PATH_INFO"] =~ /-refresh/
         return send_to_radiant
       end
 
