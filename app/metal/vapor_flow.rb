@@ -38,8 +38,6 @@ class VaporFlow
           query_string_symbol = (redirect_url =~ /\?/ ? "&" : "?")
           return [status, {"Location" => CGI.unescape(local_or_external_path(redirect_url)) + (!query_string.blank? ? "#{query_string_symbol}#{query_string}" : '')}, [status.to_s]]
           break
-        else
-          result = self.send_to_radiant
         end
       end
       return result
