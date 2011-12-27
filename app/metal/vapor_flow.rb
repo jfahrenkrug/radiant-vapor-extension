@@ -11,7 +11,6 @@ class VaporFlow
         return send_to_radiant
       end
 
-      url = url.sub(/^\//,'') unless url == '/' #clean off the first slash, like it is stored in the db
       full_url = 'http://' + env["HTTP_HOST"] +  env["PATH_INFO"]
       relative_url = env["PATH_INFO"].sub(/^\//,'') #clean off the first slash, like it is stored in the db
 
